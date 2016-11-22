@@ -229,7 +229,7 @@ This project can be efficiently solved by classifying students into two discrete
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[182]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Import libraries</span>
@@ -241,7 +241,7 @@ This project can be efficiently solved by classifying students into two discrete
 <span class="c"># Read student data</span>
 <span class="n">student_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&quot;student-data.csv&quot;</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Student data read successfully!&quot;</span>
-<span class="k">print</span> <span class="n">student_data</span>
+<span class="k">print</span> <span class="n">student_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="c">#print len(student_data)</span>
 </pre></div>
 
@@ -256,196 +256,28 @@ This project can be efficiently solved by classifying students into two discrete
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Student data read successfully!
-    school sex  age address famsize Pstatus  Medu  Fedu      Mjob      Fjob  \
-0       GP   F   18       U     GT3       A     4     4   at_home   teacher   
-1       GP   F   17       U     GT3       T     1     1   at_home     other   
-2       GP   F   15       U     LE3       T     1     1   at_home     other   
-3       GP   F   15       U     GT3       T     4     2    health  services   
-4       GP   F   16       U     GT3       T     3     3     other     other   
-5       GP   M   16       U     LE3       T     4     3  services     other   
-6       GP   M   16       U     LE3       T     2     2     other     other   
-7       GP   F   17       U     GT3       A     4     4     other   teacher   
-8       GP   M   15       U     LE3       A     3     2  services     other   
-9       GP   M   15       U     GT3       T     3     4     other     other   
-10      GP   F   15       U     GT3       T     4     4   teacher    health   
-11      GP   F   15       U     GT3       T     2     1  services     other   
-12      GP   M   15       U     LE3       T     4     4    health  services   
-13      GP   M   15       U     GT3       T     4     3   teacher     other   
-14      GP   M   15       U     GT3       A     2     2     other     other   
-15      GP   F   16       U     GT3       T     4     4    health     other   
-16      GP   F   16       U     GT3       T     4     4  services  services   
-17      GP   F   16       U     GT3       T     3     3     other     other   
-18      GP   M   17       U     GT3       T     3     2  services  services   
-19      GP   M   16       U     LE3       T     4     3    health     other   
-20      GP   M   15       U     GT3       T     4     3   teacher     other   
-21      GP   M   15       U     GT3       T     4     4    health    health   
-22      GP   M   16       U     LE3       T     4     2   teacher     other   
-23      GP   M   16       U     LE3       T     2     2     other     other   
-24      GP   F   15       R     GT3       T     2     4  services    health   
-25      GP   F   16       U     GT3       T     2     2  services  services   
-26      GP   M   15       U     GT3       T     2     2     other     other   
-27      GP   M   15       U     GT3       T     4     2    health  services   
-28      GP   M   16       U     LE3       A     3     4  services     other   
-29      GP   M   16       U     GT3       T     4     4   teacher   teacher   
-..     ...  ..  ...     ...     ...     ...   ...   ...       ...       ...   
-365     MS   M   18       R     GT3       T     1     3   at_home     other   
-366     MS   M   18       U     LE3       T     4     4   teacher  services   
-367     MS   F   17       R     GT3       T     1     1     other  services   
-368     MS   F   18       U     GT3       T     2     3   at_home  services   
-369     MS   F   18       R     GT3       T     4     4     other   teacher   
-370     MS   F   19       U     LE3       T     3     2  services  services   
-371     MS   M   18       R     LE3       T     1     2   at_home  services   
-372     MS   F   17       U     GT3       T     2     2     other   at_home   
-373     MS   F   17       R     GT3       T     1     2     other     other   
-374     MS   F   18       R     LE3       T     4     4     other     other   
-375     MS   F   18       R     GT3       T     1     1     other     other   
-376     MS   F   20       U     GT3       T     4     2    health     other   
-377     MS   F   18       R     LE3       T     4     4   teacher  services   
-378     MS   F   18       U     GT3       T     3     3     other     other   
-379     MS   F   17       R     GT3       T     3     1   at_home     other   
-380     MS   M   18       U     GT3       T     4     4   teacher   teacher   
-381     MS   M   18       R     GT3       T     2     1     other     other   
-382     MS   M   17       U     GT3       T     2     3     other  services   
-383     MS   M   19       R     GT3       T     1     1     other  services   
-384     MS   M   18       R     GT3       T     4     2     other     other   
-385     MS   F   18       R     GT3       T     2     2   at_home     other   
-386     MS   F   18       R     GT3       T     4     4   teacher   at_home   
-387     MS   F   19       R     GT3       T     2     3  services     other   
-388     MS   F   18       U     LE3       T     3     1   teacher  services   
-389     MS   F   18       U     GT3       T     1     1     other     other   
-390     MS   M   20       U     LE3       A     2     2  services  services   
-391     MS   M   17       U     LE3       T     3     1  services  services   
-392     MS   M   21       R     GT3       T     1     1     other     other   
-393     MS   M   18       R     LE3       T     3     2  services     other   
-394     MS   M   19       U     LE3       T     1     1     other   at_home   
+  school sex  age address famsize Pstatus  Medu  Fedu     Mjob      Fjob  \
+0     GP   F   18       U     GT3       A     4     4  at_home   teacher   
+1     GP   F   17       U     GT3       T     1     1  at_home     other   
+2     GP   F   15       U     LE3       T     1     1  at_home     other   
+3     GP   F   15       U     GT3       T     4     2   health  services   
+4     GP   F   16       U     GT3       T     3     3    other     other   
 
-     ...   internet romantic  famrel  freetime  goout Dalc Walc health  \
-0    ...         no       no       4         3      4    1    1      3   
-1    ...        yes       no       5         3      3    1    1      3   
-2    ...        yes       no       4         3      2    2    3      3   
-3    ...        yes      yes       3         2      2    1    1      5   
-4    ...         no       no       4         3      2    1    2      5   
-5    ...        yes       no       5         4      2    1    2      5   
-6    ...        yes       no       4         4      4    1    1      3   
-7    ...         no       no       4         1      4    1    1      1   
-8    ...        yes       no       4         2      2    1    1      1   
-9    ...        yes       no       5         5      1    1    1      5   
-10   ...        yes       no       3         3      3    1    2      2   
-11   ...        yes       no       5         2      2    1    1      4   
-12   ...        yes       no       4         3      3    1    3      5   
-13   ...        yes       no       5         4      3    1    2      3   
-14   ...        yes      yes       4         5      2    1    1      3   
-15   ...        yes       no       4         4      4    1    2      2   
-16   ...        yes       no       3         2      3    1    2      2   
-17   ...         no       no       5         3      2    1    1      4   
-18   ...        yes       no       5         5      5    2    4      5   
-19   ...        yes       no       3         1      3    1    3      5   
-20   ...        yes       no       4         4      1    1    1      1   
-21   ...        yes       no       5         4      2    1    1      5   
-22   ...        yes       no       4         5      1    1    3      5   
-23   ...        yes       no       5         4      4    2    4      5   
-24   ...        yes       no       4         3      2    1    1      5   
-25   ...        yes       no       1         2      2    1    3      5   
-26   ...        yes       no       4         2      2    1    2      5   
-27   ...        yes       no       2         2      4    2    4      1   
-28   ...        yes       no       5         3      3    1    1      5   
-29   ...        yes      yes       4         4      5    5    5      5   
-..   ...        ...      ...     ...       ...    ...  ...  ...    ...   
-365  ...         no       no       3         3      4    2    4      3   
-366  ...        yes      yes       4         2      2    2    2      5   
-367  ...        yes      yes       5         2      1    1    2      1   
-368  ...        yes      yes       5         2      3    1    2      4   
-369  ...        yes      yes       3         2      2    4    2      5   
-370  ...         no      yes       3         2      2    1    1      3   
-371  ...        yes      yes       4         3      3    2    3      3   
-372  ...         no      yes       3         4      3    1    1      3   
-373  ...        yes       no       3         5      5    1    3      1   
-374  ...        yes       no       5         4      4    1    1      1   
-375  ...        yes       no       4         3      2    1    2      4   
-376  ...        yes      yes       5         4      3    1    1      3   
-377  ...        yes       no       5         4      3    3    4      2   
-378  ...        yes      yes       4         1      3    1    2      1   
-379  ...        yes       no       4         5      4    2    3      1   
-380  ...        yes       no       3         2      4    1    4      2   
-381  ...        yes      yes       4         4      3    1    3      5   
-382  ...        yes       no       4         4      3    1    1      3   
-383  ...         no       no       4         3      2    1    3      5   
-384  ...         no       no       5         4      3    4    3      3   
-385  ...         no       no       5         3      3    1    3      4   
-386  ...        yes      yes       4         4      3    2    2      5   
-387  ...        yes       no       5         4      2    1    2      5   
-388  ...        yes       no       4         3      4    1    1      1   
-389  ...         no       no       1         1      1    1    1      5   
-390  ...         no       no       5         5      4    4    5      4   
-391  ...        yes       no       2         4      5    3    4      2   
-392  ...         no       no       5         5      3    3    3      3   
-393  ...        yes       no       4         4      1    3    4      5   
-394  ...        yes       no       3         2      3    3    3      5   
+   ...   internet romantic  famrel  freetime  goout Dalc Walc health absences  \
+0  ...         no       no       4         3      4    1    1      3        6   
+1  ...        yes       no       5         3      3    1    1      3        4   
+2  ...        yes       no       4         3      2    2    3      3       10   
+3  ...        yes      yes       3         2      2    1    1      5        2   
+4  ...         no       no       4         3      2    1    2      5        4   
 
-    absences passed  
-0          6     no  
-1          4     no  
-2         10    yes  
-3          2    yes  
-4          4    yes  
-5         10    yes  
-6          0    yes  
-7          6     no  
-8          0    yes  
-9          0    yes  
-10         0     no  
-11         4    yes  
-12         2    yes  
-13         2    yes  
-14         0    yes  
-15         4    yes  
-16         6    yes  
-17         4    yes  
-18        16     no  
-19         4    yes  
-20         0    yes  
-21         0    yes  
-22         2    yes  
-23         0    yes  
-24         2     no  
-25        14     no  
-26         2    yes  
-27         4    yes  
-28         4    yes  
-29        16    yes  
-..       ...    ...  
-365        4    yes  
-366        0    yes  
-367        0     no  
-368        0    yes  
-369       10    yes  
-370        4     no  
-371        3    yes  
-372        8    yes  
-373       14     no  
-374        0    yes  
-375        2    yes  
-376        4    yes  
-377        4    yes  
-378        0    yes  
-379       17    yes  
-380        4    yes  
-381        5     no  
-382        2    yes  
-383        0     no  
-384       14     no  
-385        2    yes  
-386        7     no  
-387        0     no  
-388        0     no  
-389        0     no  
-390       11     no  
-391        3    yes  
-392        3     no  
-393        0    yes  
-394        5     no  
+  passed  
+0     no  
+1     no  
+2    yes  
+3    yes  
+4    yes  
 
-[395 rows x 31 columns]
+[5 rows x 31 columns]
 </pre>
 </div>
 </div>
@@ -473,7 +305,7 @@ This project can be efficiently solved by classifying students into two discrete
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[183]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Calculate number of students</span>
@@ -541,7 +373,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[184]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Extract feature columns</span>
@@ -623,7 +455,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[185]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -694,12 +526,13 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[198]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import any additional functionality you may need here</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">ShuffleSplit</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span> 
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">StratifiedShuffleSplit</span>
 
 <span class="c"># TODO: Set the number of training points</span>
 <span class="n">num_train</span> <span class="o">=</span> <span class="mi">300</span>
@@ -710,15 +543,11 @@ Feature values:
 <span class="c">#print num_test</span>
 
 <span class="c"># TODO: Shuffle and split the dataset into the number of training and testing points above</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.24</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">sss</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">y_all</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">num_test</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">29</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">sss</span><span class="p">:</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_all</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">X_all</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+    <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y_all</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">y_all</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
 
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test</span>
-
-<span class="n">new</span><span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
 
 <span class="c"># Show the results of the split</span>
 <span class="k">print</span> <span class="s">&quot;Training set has {} samples.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -735,8 +564,7 @@ Feature values:
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>100
-Training set has 300 samples.
+<pre>Training set has 300 samples.
 Testing set has 95 samples.
 </pre>
 </div>
@@ -781,83 +609,91 @@ Testing set has 95 samples.
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong></p>
-<ol>
-<li>Support Vector Machines (SVM)</li>
-</ol>
-<p>Real world application:
+</div>**Answer: **
+1. Support Vector Machines (SVM)
+
+Real world application:
 a. SVM can be used for Gender Classification Based on 3D Face Geometry 
-<a href="http://ieeexplore.ieee.org/document/5279671/">http://ieeexplore.ieee.org/document/5279671/</a>
- Face Detection with Facial Features and Gender Classification
-<a href="http://www.itfrindia.org/ICCIC/Vol2/9018ICCIC.pdf">http://www.itfrindia.org/ICCIC/Vol2/9018ICCIC.pdf</a></p>
-<p>b. Recognizing hand-written digits
-<a href="http://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html">http://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html</a></p>
-<p>Strengths:
-SVM supports kernels &amp; soft-margin SVM, so we can model even non-linear relations.
+http://ieeexplore.ieee.org/document/5279671/
+
+b. Face Detection with Facial Features and Gender Classification
+http://www.itfrindia.org/ICCIC/Vol2/9018ICCIC.pdf
+
+c. Recognizing hand-written digits
+http://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html
+
+Strengths:
+SVM supports kernels & soft-margin SVM, so we can model even non-linear relations.
 Training is relatively easy. No local optimal, unlike in neural networks.
-It scales relatively well to high dimensional data.</p>
-<p>Weakness:
+It scales relatively well to high dimensional data.
+SVM implementation supports class_weights, which allows to account for imbalanced class distributions.
+
+Weakness:
 One limitation of the support vector approach lies in choice of the kernel. Incorrect choice of kernel can lead to overfitting or high-bias.
-A second limitation is speed and size, both in training and testing.</p>
-<p>SVM is a classification SLM which seperates data into different groups by a dividing the hyperplane. In this project our goal is to classify students dataset into two, students who need intervention and students who dont. Thus SVM can be used to find a hyperplane to seperate students into above two groups as required.
-Also natural task for SVM is binary classification, which is exactly the case in this project.Also it scales relatively well to high dimensional data (given there are 30 features). Also as data is not large, speed and size will not be an issue.</p>
-<ol>
-<li>Decision Tree:
+A second limitation is speed and size, both in training and testing.
+
+Why SVM:
+SVM is a classification SLM which seperates data into different groups by a dividing the hyperplane. 
+Natural task for SVM is binary classification, which is exactly the case in this project.
+SVM supports kernels & soft-margin SVM, so we can model even non-linear relations.
+Moreover, the classes (pass% vs fail%) in the given dataset are slightly imbalanced (67% vs 33%), so the class_weight paramteter may be helpful here. Also it scales relatively well to high dimensional data (given there are 48 features). Also as data is not large, speed and size will not be an issue.
+
+
+2. Decision Tree:
 Real world application:
 a. Object recognition: Tree based classification has been used recently for recognizing three dimensional objects [338,39] and for high level vision [184].
-<a href="http://www.cbcb.umd.edu/~salzberg/docs/murthy_thesis/survey/node32.html">http://www.cbcb.umd.edu/~salzberg/docs/murthy_thesis/survey/node32.html</a></li>
-</ol>
-<p>b. Molecular biology: Decision trees for analyzing amino acid sequences.
-<a href="http://www.cbcb.umd.edu/~salzberg/docs/murthy_thesis/survey/node32.html">http://www.cbcb.umd.edu/~salzberg/docs/murthy_thesis/survey/node32.html</a></p>
-<p>Strengths:</p>
-<ol>
-<li>Decision trees implicitly perform variable screening or feature selection.
-When we fit a decision tree to a training dataset, the top few nodes on which the tree is split are essentially the most important variables within the dataset and with decision tree feature selection is completed automatically.</li>
-<li>Decision trees require relatively little effort from users for data preparation.
-o overcome scale differences between parameters - for example if we have a dataset which measures revenue in millions and loan age in years, say; this will require some form of normalization or scaling before we can fit a regression model and interpret the coefficients.  Such variable transformations are not required with  decision trees because the tree structure will remain the same with or without the transformation.</li>
-</ol>
-<p>Another feature which saves data prep time: missing values will not prevent splitting the data for building trees. 
-Decision trees are also not sensitive to outliers since the splitting happens based on proportion of samples within the split ranges and not on absolute values.</p>
-<ol>
-<li><p>Nonlinear relationships between parameters do not affect tree performance.
-Decision trees do not require any assumptions of linearity in the data. Thus, we can use them in scenarios where we know the parameters are nonlinearly related.</p>
-</li>
-<li><p>The best feature of using trees for analytics - easy to interpret and explain to executives!</p>
-</li>
-</ol>
-<p>Weakness:</p>
-<ol>
-<li>Without proper pruning or limiting tree growth, they tend to overfit the training data, making them somewhat poor predictors.</li>
-<li>Tree splitting is locally greedy – At each level, tree looks for binary split such that impurity of tree is reduced by maximum amount. This is a greedy algorithm and may result in local optima.</li>
-</ol>
-<ol>
-<li>Ensemble Methods(Boosting)
+http://www.cbcb.umd.edu/~salzberg/docs/murthy_thesis/survey/node32.html
+
+b. Molecular biology: Decision trees for analyzing amino acid sequences.
+http://www.cbcb.umd.edu/~salzberg/docs/murthy_thesis/survey/node32.html
+
+Strengths:
+1. Decision trees implicitly perform variable screening or feature selection.
+When we fit a decision tree to a training dataset, the top few nodes on which the tree is split are essentially the most important variables within the dataset and with decision tree feature selection is completed automatically.
+2. Decision trees require relatively little effort from users for data preparation.
+To overcome scale differences between parameters - for example if we have a dataset which measures revenue in millions and loan age in years, say; this will require some form of normalization or scaling before we can fit a regression model and interpret the coefficients.  Such variable transformations are not required with  decision trees because the tree structure will remain the same with or without the transformation.
+
+Another feature which saves data prep time: missing values will not prevent splitting the data for building trees. 
+Decision trees are also not sensitive to outliers since the splitting happens based on proportion of samples within the split ranges and not on absolute values.
+
+3. Nonlinear relationships between parameters do not affect tree performance.
+Decision trees do not require any assumptions of linearity in the data. Thus, we can use them in scenarios where we know the parameters are nonlinearly related.
+
+4. The best feature of using trees for analytics - easy to interpret and explain to executives!
+
+Weakness:
+1. Without proper pruning or limiting tree growth, they tend to overfit the training data, making them somewhat poor predictors.
+2. 	Tree splitting is locally greedy – At each level, tree looks for binary split such that impurity of tree is reduced by maximum amount. This is a greedy algorithm and may result in local optima.
+
+
+Why Decision Tree:
+One advantage of DT is nonlinear relationships between features do not affect tree performance. This will be useful as this project has 48 features which could be nonlinear.
+Also it's easy to interpret and explain.
+
+
+3. Ensemble Methods(GradientBoostingClassifier)
 Real world applications:
 a. Estimation of Osteoporotic Fracture Cases by Using Ensemble Learning Approaches.
-<a href="https://www.ncbi.nlm.nih.gov/pubmed/26660692">https://www.ncbi.nlm.nih.gov/pubmed/26660692</a></li>
-</ol>
-<p>b. Ensemble learning approaches used in the identification of disease mutations
-<a href="http://ieeexplore.ieee.org/abstract/document/5639753/">http://ieeexplore.ieee.org/abstract/document/5639753/</a></p>
-<p>Strengths:</p>
-<ol>
-<li>Does not learn a single classifier but learns a set of classifiers &amp; combines the predictions of multiple classifiers, parameters to get higher accuracy.</li>
-<li>Reduces overfitting.</li>
-</ol>
-<p>Weakness:</p>
-<ol>
-<li>Increased storage. Instead of a single classifier all component classifiers,need to be stored after training. The total storage depends on the size of each component classifier itself and the size of the ensemble (number of classifiers in the ensemble).Performance will be limited when computational storage is limited.</li>
-<li>Increased computation. Takes longer time,(* at times days) to provide results since  to classify an input query, all component classifiers (instead of a single classifier) must be processed, and thus it requires more execution time.  Not suitable when smaller computation time is a factor.</li>
-</ol>
+https://www.ncbi.nlm.nih.gov/pubmed/26660692
 
-</div>
-</div>
-</div>
+b. Ensemble learning approaches used in the identification of disease mutations
+http://ieeexplore.ieee.org/abstract/document/5639753/
+
+Strengths:
+1. Does not learn a single classifier but learns a set of classifiers & combines the predictions of multiple classifiers, parameters to get higher accuracy.
+2. You can increase the number of boosting iterations of GBC as much as you want without danger of overfitting. Instead, it tends to improve classification performance more and more the longer you run it. .
+3. It can capture very complex non-linear depenencies in the data.
+4. Like SVMs, GBC also has a parameter sample_weight that allows to account for imbalanced class distributions. 
+5. Can handle very well high dimensional spaces as well as large number of training examples.
+
+Weakness:
+The clear drawback of boosting is that it trains lots of weak learners and due to the sequentiality of boosting, you cannot train these weak learners in parallel. Each tree individually requires time O(n * log(n)) for training (this is the optimized implementation of sklearn, normally it is O(n^2 log(n) for trees). Thus, gradient boosting will take considerable time if you run it many times, which is necesary to benefit from ensembling. You must also carefully select the many hyperparameters (too many to list them here, check out sklarn's docs), which adds to the computational cost of boosting. In particular, you must get regularization right since if your individual weak learners overfit to the training data, then boosting will not improve the performance no matter how long you run it (this is well explained in the Udacity's lectures on boosting). Another consideration could be deployment to production environments, which will be a lot more complicated as compared to simple models like LR (you would have to deploy all trained weak learners as well as the ensembling logic).
+
+Why Ensemble Methods(GradientBoostingClassifier):
+To address imbalanced data, I thought of using Ensemble Methods(GradientBoostingClassifier). One fear I had was that since there were a lot more students passing than failing in the dataset, the models might be biased to classify students as “passing.” Relatively speaking, we might not have enough examples to generally tell when a student is going to fail. When training, our models might just see that most of the examples are of students that don’t need an intervention. They might not have learned from enough examples to describe a student who might need an intervention, so the models might be biased to just classify students generally as passing. GradientBoostingClassifier might solve this issue when training by focusing on the examples that it got wrong. Through several iterations on the training set and a weighing process, it finds weak learners that perform better and better on the previously incorrect predictions. 
+
+Also it's a good fit as it can handle very well high dimensional data (given there are 48 features).
+    
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -878,7 +714,7 @@ a. Estimation of Osteoporotic Fracture Cases by Using Ensemble Learning Approach
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[199]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -951,7 +787,7 @@ a. Estimation of Osteoporotic Fracture Cases by Using Ensemble Learning Approach
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[202]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import the three supervised learning models from sklearn</span>
@@ -969,15 +805,16 @@ a. Estimation of Osteoporotic Fracture Cases by Using Ensemble Learning Approach
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
 
 <span class="c"># TODO: Initialize the three models</span>
-<span class="c">#clf_A = svm.SVC()</span>
+<span class="n">clf_A</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
 <span class="c">#clf_A = linear_model.SGDClassifier()</span>
 <span class="c">#clf_A = AdaBoostClassifier()</span>
 <span class="c">#clf_A = GaussianNB()</span>
 <span class="c">#clf_A= BaggingClassifier()</span>
-<span class="n">clf_A</span><span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="c">#clf_A= RandomForestClassifier()</span>
 <span class="c">#clf_A= svm.SVC()</span>
 <span class="n">clf_B</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
 <span class="n">clf_C</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
+<span class="n">classifiers</span> <span class="o">=</span> <span class="p">[</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">clf_B</span><span class="p">,</span> <span class="n">clf_C</span><span class="p">]</span>
 
 <span class="c"># TODO: Set up the training set sizes</span>
 <span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -989,8 +826,13 @@ a. Estimation of Osteoporotic Fracture Cases by Using Ensemble Learning Approach
 <span class="n">X_train_300</span> <span class="o">=</span> <span class="n">X_train</span>
 <span class="n">y_train_300</span> <span class="o">=</span> <span class="n">y_train</span>
 
+<span class="n">train_sets</span> <span class="o">=</span> <span class="p">[(</span><span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">),</span> <span class="p">(</span><span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">),</span> <span class="p">(</span><span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">)]</span>
 <span class="c"># TODO: Execute the &#39;train_predict&#39; function for each classifier and each training set size</span>
-<span class="n">train_predict</span><span class="p">(</span> <span class="n">clf_A</span> <span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="c">#train_predict( clf_C , X_train_300, y_train_300, X_test, y_test)</span>
+<span class="k">for</span> <span class="n">clf</span> <span class="ow">in</span> <span class="n">classifiers</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">clf</span>
+    <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">train_sets</span><span class="p">:</span>
+        <span class="n">train_predict</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1003,12 +845,76 @@ a. Estimation of Osteoporotic Fracture Cases by Using Ensemble Learning Approach
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training a RandomForestClassifier using a training set size of 300. . .
+<pre>
+SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
+  kernel=&apos;rbf&apos;, max_iter=-1, probability=False, random_state=None,
+  shrinking=True, tol=0.001, verbose=False)
+Training a SVC using a training set size of 100. . .
+Trained model in 0.0000 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 0.8442.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.8205.
+Training a SVC using a training set size of 200. . .
 Trained model in 0.0100 seconds
-Made predictions in 0.0020 seconds.
-F1 score for training set: 0.9950.
-Made predictions in 0.0010 seconds.
-F1 score for test set: 0.7746.
+Made predictions in 0.0000 seconds.
+F1 score for training set: 0.8498.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.8129.
+Training a SVC using a training set size of 300. . .
+Trained model in 0.0100 seconds
+Made predictions in 0.0100 seconds.
+F1 score for training set: 0.8481.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.8182.
+
+DecisionTreeClassifier(class_weight=None, criterion=&apos;gini&apos;, max_depth=None,
+            max_features=None, max_leaf_nodes=None, min_samples_leaf=1,
+            min_samples_split=2, min_weight_fraction_leaf=0.0,
+            random_state=None, splitter=&apos;best&apos;)
+Training a DecisionTreeClassifier using a training set size of 100. . .
+Trained model in 0.0000 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.6772.
+Training a DecisionTreeClassifier using a training set size of 200. . .
+Trained model in 0.0100 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.7907.
+Training a DecisionTreeClassifier using a training set size of 300. . .
+Trained model in 0.0000 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.7259.
+
+GradientBoostingClassifier(init=None, learning_rate=0.1, loss=&apos;deviance&apos;,
+              max_depth=3, max_features=None, max_leaf_nodes=None,
+              min_samples_leaf=1, min_samples_split=2,
+              min_weight_fraction_leaf=0.0, n_estimators=100,
+              random_state=None, subsample=1.0, verbose=0,
+              warm_start=False)
+Training a GradientBoostingClassifier using a training set size of 100. . .
+Trained model in 0.0600 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.7244.
+Training a GradientBoostingClassifier using a training set size of 200. . .
+Trained model in 0.0810 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 0.9888.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.8000.
+Training a GradientBoostingClassifier using a training set size of 300. . .
+Trained model in 0.0940 seconds
+Made predictions in 0.0000 seconds.
+F1 score for training set: 0.9687.
+Made predictions in 0.0000 seconds.
+F1 score for test set: 0.8163.
 </pre>
 </div>
 </div>
@@ -1045,24 +951,24 @@ F1 score for test set: 0.7746.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0020</td>
-<td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.8889</td>
-<td style="text-align:center">0.8077</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.8442</td>
+<td style="text-align:center">0.8205</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
+<td style="text-align:center">0.0110</td>
 <td style="text-align:center">0.0040</td>
-<td style="text-align:center">0.0030</td>
-<td style="text-align:center">0.8669</td>
-<td style="text-align:center">0.8205</td>
+<td style="text-align:center">0.8498</td>
+<td style="text-align:center">0.8129</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0090</td>
-<td style="text-align:center">0.0060</td>
-<td style="text-align:center">0.8565</td>
-<td style="text-align:center">0.8205</td>
+<td style="text-align:center">0.0100</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.8481</td>
+<td style="text-align:center">0.8182</td>
 </tr>
 </tbody>
 </table>
@@ -1079,24 +985,24 @@ F1 score for test set: 0.7746.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.0000</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.7077</td>
+<td style="text-align:center">0.7132</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0020</td>
-<td style="text-align:center">0.0030</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.0000</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.6615</td>
+<td style="text-align:center">0.8030</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0020</td>
-<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.0120</td>
+<td style="text-align:center">0.0010</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.7883</td>
+<td style="text-align:center">0.7299</td>
 </tr>
 </tbody>
 </table>
@@ -1113,24 +1019,24 @@ F1 score for test set: 0.7746.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0680</td>
+<td style="text-align:center">0.0600</td>
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.7612</td>
+<td style="text-align:center">0.7143</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.1020</td>
-<td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.9858</td>
-<td style="text-align:center">0.8299</td>
+<td style="text-align:center">0.0810</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.9888</td>
+<td style="text-align:center">0.8000</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.1480</td>
-<td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.9592</td>
-<td style="text-align:center">0.8108</td>
+<td style="text-align:center">0.0940</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.9687</td>
+<td style="text-align:center">0.8163</td>
 </tr>
 </tbody>
 </table>
@@ -1166,16 +1072,20 @@ F1 score for test set: 0.7746.
 <p><strong>Answer: </strong>
 F1 score, cost &amp; time performance are some of the key features which need to be considered while selecting a ML model.</p>
 <ol>
-<li>For the given problem, the amount of data is fairly small. So performance time (fitting, prediction) of any ML model will be fairly small (less than 1 second). So time performance should not be a factor to decide a model in this case.</li>
-<li>Cost: cost can be determined in terms of time it takes to run as well as storage/memory it requires. Again these factors will only play a role if the dataset is huge(in Terabytes range). Since dataset in this problem is significantly small to make any impact of storage requirements based on model selected, the cost of operation will be fairly equal for any ML model.</li>
-<li>Given above two, the only key feature to look while selecting a model will be how accurate it is while predicting new data. Model with best F1 score should be selected.</li>
+<li><p>For the given problem, the amount of data is fairly small. As observed performance time (fitting, prediction) of 3  ML model is be fairly small (less than .1 second). Even if the data goes on to increase by factor of 10^3,training time will be still less than 2 mins. So time performance should not be a major factor to decide a model in this case.</p>
+</li>
+<li><p>Cost: cost can be determined in terms of time it takes to run as well as storage/memory it requires. Again these factors will only play a role if the dataset is huge(in Terabytes range). Since dataset in this problem is significantly small (also it's highly unlikely for student data to reach a range) to make any significant impact of storage requirements based on model selected, the cost of operation will be fairly equal for any ML model.</p>
+</li>
+<li><p>Given above two, the most significant feature to consider while selecting a model will be the F1 score. Model with best F1 score should be selected.
+Also it's worth noting, selecting model with best F1 is more important as this will have identify students which need intervention with more accuracy, thus getting them the right help at right time ensuring good future. So any slight saving in cost &amp; time performance should be ignored for better F1 score.</p>
+</li>
 </ol>
 <p>SVM, DecisionTree and Ensemble Methods (GradientBoostingClassifier) were used to perform trials on the provided dataset.
-We observed, all three models had almost similar testing F1 Scores.(withing .0322 of each other range(0.7883- .8205)).
-However Ensemble Methods (GradientBoostingClassifier) performed considerably well in fitting the training dataset with F1 score of 0.9592 and prediting testing data with a F1 score of 0.8108.
-This shows that although the Ensemble Methods (GradientBoostingClassifier) is overfitting in comparision to SVM, it still is acheiving almost equivalent F1 test scores to SVM.
-So by fine tuning parameters using GridsearchCV, Ensemble Methods (GradientBoostingClassifier) should be able to bring it's F1 test score closer to its training F1 score which is almost 1.</p>
-<p>So Ensemble Methods (GradientBoostingClassifier) should be an appropriate model for this project.</p>
+We observed, of the three models DecisionTree had the lowest avg testing F1 Scores.
+GradientBoostingClassifier &amp; SVM performed almost smiliarly on test data generating almost similar F1 score.
+However compared to SVM with GradientBoostingClassifier we see a larger spread between training &amp; testing F1 score indicating higher overfitting with GradientBoostingClassifier.</p>
+<p>Based on this we choose SVM as the best model for this project.
+Also GradientBoostingClassifier is slower in terms of training data compared to SVM, which further supports our choice of model.</p>
 
 </div>
 </div>
@@ -1195,13 +1105,10 @@ So by fine tuning parameters using GridsearchCV, Ensemble Methods (GradientBoost
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>**Answer: 
-In this project, we have 395 number of students, each having 30 features such as school, sex,  age, address famsize, interests etc which the alogrithm will use to classfiy students with a Pass or Fail label. Of the 395 students datapoint, we split 300 data points to train the ML model. The rest 95 data points were then used to verify how well the ML model was able to predict whether a student Passed or Fail by comparing ML output with the actual pass/fail results. The ML Algorithm which performed best was chosen.
-Based on the prediction performance Ensemble Methods (GradientBoostingClassifier) ML algorithm was chosen. 
-Basic idea:
-Ensemble methods combine learnings from multiple learning algorithms to obtain a better predictive performance rather than just using any one algorithm alone.
-Ensemble Methods(GradientBoostingClassifer) algorithm produced a more accurate prediction model by combining information gained from multiple weak/not as accurate base prediction models.Base prediction model used was decision trees.
-Often the ML model performance can be enhanced by varying the default parameters of the model as per the problem at hand.Thus further performance increase was achieved by using GridSearchCV program which creates a new best model by varying the defaul parameters for GradientBoostingClassifer.</p>
+<p>**Answer:</p>
+<p>First, the model learns how a student's performance indicators lead to whether a student will graduate or otherwise. The model can do this because we already have existing data on students who have and have not graduated, so our model can learn the performance indicators of those students. Based on the student's performance indicators, the model will split the dataset into Pass &amp; Fail classes. SVM model will choose a line that maximizes the distance to the nearest points of either of two classes.</p>
+<p>With this in mind, the second step is predicting whether new students would graduate or otherwise. This time we do not have information on existing students whether they have graduated or not as they are still studying. However, we have a model that learned from previous batches of students who graduated. The new students' performance indicators with their respective values will be fed into our model and the model will output a probability and students will be classified according to whether they are "likely to graduate" or "unlikely to graduate". We can then take preventive measures on students who are unlikely to graduate.</p>
+<p>Moreover, if we would like to play it safe and ensure that we spot as many students as we can who are "unlikely to graduate", even if they may be "likely to graduate", we can increase our strictness in determining their likelihood of graduating, and spot more of them. This is because there is no harm in flagging a student who is "likely to graduate" as "unlikely to graduate". But there may be severe repercussions if we flag a student who is "unlikely to graduate" as "likely to graduate" and do not attend to the student.</p>
 
 </div>
 </div>
@@ -1232,7 +1139,7 @@ Often the ML model performance can be enhanced by varying the default parameters
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[242]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
@@ -1240,13 +1147,14 @@ Often the ML model performance can be enhanced by varying the default parameters
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span><span class="p">,</span> <span class="n">fbeta_score</span><span class="p">,</span> <span class="n">f1_score</span>
 
 <span class="c"># TODO: Create the parameters list you wish to tune</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_estimators&#39;</span><span class="p">:[</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">200</span><span class="p">],</span><span class="s">&#39;learning_rate&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="s">&#39;max_depth&#39;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span><span class="s">&#39;random_state&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]}</span>
+<span class="c">#parameters = {&#39;n_estimators&#39;:[100,10],&#39;learning_rate&#39;:[1,.5],&#39;max_depth&#39;:[15,2,7],&#39;random_state&#39;:[22,43,15]}</span>
 
-<span class="c">#parameters = {&#39;n_estimators&#39;:[48, 40],&#39;max_depth&#39;:[3,5,7],&#39;random_state&#39;:[0,5],&#39;min_samples_split&#39;:[5,2]}</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:[</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span><span class="s">&#39;gamma&#39;</span><span class="p">:[</span><span class="o">.</span><span class="mo">02</span><span class="p">,</span><span class="o">.</span><span class="mo">00</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mo">004</span><span class="p">],</span><span class="s">&#39;tol&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">)}</span>
 
 <span class="c"># TODO: Initialize the classifier</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
-<span class="c">#clf = RandomForestClassifier()</span>
+<span class="c">#clf = GradientBoostingClassifier()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
 <span class="c"># TODO: Make an f1 scoring function using &#39;make_scorer&#39; </span>
 <span class="n">f1_scorer</span> <span class="o">=</span>  <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span><span class="n">pos_label</span><span class="o">=</span><span class="s">&#39;yes&#39;</span><span class="p">)</span>
 
@@ -1259,6 +1167,7 @@ Often the ML model performance can be enhanced by varying the default parameters
 <span class="c"># Get the estimator</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">best_estimator_</span>
 
+<span class="k">print</span> <span class="n">clf</span>
 <span class="c"># Report the final F1 score for training and testing after parameter tuning</span>
 <span class="k">print</span> <span class="s">&quot;Tuned model has a training F1 score of {:.4f}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">predict_labels</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
 <span class="k">print</span> <span class="s">&quot;Tuned model has a testing F1 score of {:.4f}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">predict_labels</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
@@ -1274,10 +1183,13 @@ Often the ML model performance can be enhanced by varying the default parameters
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Made predictions in 0.0000 seconds.
-Tuned model has a training F1 score of 1.0000.
+<pre>SVC(C=6, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.004,
+  kernel=&apos;rbf&apos;, max_iter=-1, probability=False, random_state=None,
+  shrinking=True, tol=0.001, verbose=False)
+Made predictions in 0.0100 seconds.
+Tuned model has a training F1 score of 0.8497.
 Made predictions in 0.0000 seconds.
-Tuned model has a testing F1 score of 0.8552.
+Tuned model has a testing F1 score of 0.8322.
 </pre>
 </div>
 </div>
@@ -1303,20 +1215,25 @@ Tuned model has a testing F1 score of 0.8552.
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>**Answer: 
 Final Model's F1 score before tuning:</p>
-<p>Training a GradientBoostingClassifier using a training set size of 300. . .
-Trained model in 0.1190 seconds
-Made predictions in 0.0010 seconds.
-F1 score for training set: 0.9592.
+<p>SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
+  kernel='rbf', max_iter=-1, probability=False, random_state=None,
+  shrinking=True, tol=0.001, verbose=False)
+Training a SVC using a training set size of 300. . .
+Trained model in 0.0100 seconds
+Made predictions in 0.0100 seconds.
+F1 score for training set: 0.8481.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.8108.</p>
-<p>Final Model's F1 score after tuning:
-Training a GradientBoostingClassifier using a training set size of 300. . .
-Made predictions in 0.0010 seconds.
-Tuned model has a training F1 score of 1.0000.
+F1 score for test set: 0.8182.</p>
+<p>Final Model's F1 score after tuning:</p>
+<p>SVC(C=6, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.004,
+  kernel='rbf', max_iter=-1, probability=False, random_state=None,
+  shrinking=True, tol=0.001, verbose=False)
+Made predictions in 0.0100 seconds.
+Tuned model has a training F1 score of 0.8497.
 Made predictions in 0.0000 seconds.
-Tuned model has a testing F1 score of 0.8552</p>
-<p>As can be observed after tuning the training F1 score has improved from .9592 to 1.0 by 0.0408(4.25%)
-Testing F1 score has improved from 0.8108 to 0.8552 by 0.0444(5.47%)</p>
+Tuned model has a testing F1 score of 0.8322.</p>
+<p>As can be observed after tuning the training F1 score was improved from 0.8481 to 0.8497.
+Testing F1 score was improved from 0.8182 to 0.8322.</p>
 
 </div>
 </div>
