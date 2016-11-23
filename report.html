@@ -229,7 +229,7 @@ This project can be efficiently solved by classifying students into two discrete
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[182]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Import libraries</span>
@@ -305,7 +305,7 @@ This project can be efficiently solved by classifying students into two discrete
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[183]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Calculate number of students</span>
@@ -373,7 +373,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[184]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Extract feature columns</span>
@@ -455,7 +455,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[185]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -526,7 +526,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[198]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import any additional functionality you may need here</span>
@@ -714,7 +714,7 @@ Also it's a good fit as it can handle very well high dimensional data (given the
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[199]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -787,7 +787,7 @@ Also it's a good fit as it can handle very well high dimensional data (given the
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[202]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import the three supervised learning models from sklearn</span>
@@ -805,15 +805,15 @@ Also it's a good fit as it can handle very well high dimensional data (given the
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
 
 <span class="c"># TODO: Initialize the three models</span>
-<span class="n">clf_A</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
+<span class="n">clf_A</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">29</span><span class="p">)</span>
 <span class="c">#clf_A = linear_model.SGDClassifier()</span>
 <span class="c">#clf_A = AdaBoostClassifier()</span>
 <span class="c">#clf_A = GaussianNB()</span>
 <span class="c">#clf_A= BaggingClassifier()</span>
 <span class="c">#clf_A= RandomForestClassifier()</span>
 <span class="c">#clf_A= svm.SVC()</span>
-<span class="n">clf_B</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
-<span class="n">clf_C</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
+<span class="n">clf_B</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">29</span><span class="p">)</span>
+<span class="n">clf_C</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">29</span><span class="p">)</span>
 <span class="n">classifiers</span> <span class="o">=</span> <span class="p">[</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">clf_B</span><span class="p">,</span> <span class="n">clf_C</span><span class="p">]</span>
 
 <span class="c"># TODO: Set up the training set sizes</span>
@@ -847,7 +847,7 @@ Also it's a good fit as it can handle very well high dimensional data (given the
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
-  kernel=&apos;rbf&apos;, max_iter=-1, probability=False, random_state=None,
+  kernel=&apos;rbf&apos;, max_iter=-1, probability=False, random_state=29,
   shrinking=True, tol=0.001, verbose=False)
 Training a SVC using a training set size of 100. . .
 Trained model in 0.0000 seconds
@@ -856,65 +856,64 @@ F1 score for training set: 0.8442.
 Made predictions in 0.0000 seconds.
 F1 score for test set: 0.8205.
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0100 seconds
+Trained model in 0.0000 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8498.
 Made predictions in 0.0000 seconds.
 F1 score for test set: 0.8129.
 Training a SVC using a training set size of 300. . .
 Trained model in 0.0100 seconds
-Made predictions in 0.0100 seconds.
-F1 score for training set: 0.8481.
 Made predictions in 0.0000 seconds.
+F1 score for training set: 0.8481.
+Made predictions in 0.0020 seconds.
 F1 score for test set: 0.8182.
 
 DecisionTreeClassifier(class_weight=None, criterion=&apos;gini&apos;, max_depth=None,
             max_features=None, max_leaf_nodes=None, min_samples_leaf=1,
             min_samples_split=2, min_weight_fraction_leaf=0.0,
-            random_state=None, splitter=&apos;best&apos;)
+            random_state=29, splitter=&apos;best&apos;)
 Training a DecisionTreeClassifier using a training set size of 100. . .
 Trained model in 0.0000 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 1.0000.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.6772.
+F1 score for test set: 0.6457.
 Training a DecisionTreeClassifier using a training set size of 200. . .
-Trained model in 0.0100 seconds
+Trained model in 0.0020 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 1.0000.
-Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7907.
+Made predictions in 0.0010 seconds.
+F1 score for test set: 0.7597.
 Training a DecisionTreeClassifier using a training set size of 300. . .
-Trained model in 0.0000 seconds
+Trained model in 0.0020 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 1.0000.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7259.
+F1 score for test set: 0.6963.
 
 GradientBoostingClassifier(init=None, learning_rate=0.1, loss=&apos;deviance&apos;,
               max_depth=3, max_features=None, max_leaf_nodes=None,
               min_samples_leaf=1, min_samples_split=2,
               min_weight_fraction_leaf=0.0, n_estimators=100,
-              random_state=None, subsample=1.0, verbose=0,
-              warm_start=False)
+              random_state=29, subsample=1.0, verbose=0, warm_start=False)
 Training a GradientBoostingClassifier using a training set size of 100. . .
-Trained model in 0.0600 seconds
+Trained model in 0.0400 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 1.0000.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7244.
+F1 score for test set: 0.7143.
 Training a GradientBoostingClassifier using a training set size of 200. . .
-Trained model in 0.0810 seconds
+Trained model in 0.0700 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 0.9888.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.8000.
+F1 score for test set: 0.8085.
 Training a GradientBoostingClassifier using a training set size of 300. . .
-Trained model in 0.0940 seconds
+Trained model in 0.1000 seconds
 Made predictions in 0.0000 seconds.
-F1 score for training set: 0.9687.
+F1 score for training set: 0.9734.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.8163.
+F1 score for test set: 0.8056.
 </pre>
 </div>
 </div>
@@ -958,15 +957,15 @@ F1 score for test set: 0.8163.
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0110</td>
-<td style="text-align:center">0.0040</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.8498</td>
 <td style="text-align:center">0.8129</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
 <td style="text-align:center">0.0100</td>
-<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.0020</td>
 <td style="text-align:center">0.8481</td>
 <td style="text-align:center">0.8182</td>
 </tr>
@@ -988,21 +987,21 @@ F1 score for test set: 0.8163.
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.7132</td>
+<td style="text-align:center">0.6457</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.0020</td>
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.8030</td>
+<td style="text-align:center">0.7597</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0120</td>
+<td style="text-align:center">0.0020</td>
 <td style="text-align:center">0.0010</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.7299</td>
+<td style="text-align:center">0.6963</td>
 </tr>
 </tbody>
 </table>
@@ -1019,24 +1018,24 @@ F1 score for test set: 0.8163.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0600</td>
+<td style="text-align:center">0.0400</td>
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">1.0000</td>
 <td style="text-align:center">0.7143</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0810</td>
+<td style="text-align:center">0.0700</td>
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.9888</td>
-<td style="text-align:center">0.8000</td>
+<td style="text-align:center">0.8085</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0940</td>
+<td style="text-align:center">0.1000</td>
 <td style="text-align:center">0.0000</td>
-<td style="text-align:center">0.9687</td>
-<td style="text-align:center">0.8163</td>
+<td style="text-align:center">0.9734</td>
+<td style="text-align:center">0.8056</td>
 </tr>
 </tbody>
 </table>
@@ -1139,7 +1138,7 @@ Also GradientBoostingClassifier is slower in terms of training data compared to 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[242]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
@@ -1186,9 +1185,9 @@ Also GradientBoostingClassifier is slower in terms of training data compared to 
 <pre>SVC(C=6, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.004,
   kernel=&apos;rbf&apos;, max_iter=-1, probability=False, random_state=None,
   shrinking=True, tol=0.001, verbose=False)
-Made predictions in 0.0100 seconds.
+Made predictions in 0.0040 seconds.
 Tuned model has a training F1 score of 0.8497.
-Made predictions in 0.0000 seconds.
+Made predictions in 0.0020 seconds.
 Tuned model has a testing F1 score of 0.8322.
 </pre>
 </div>
